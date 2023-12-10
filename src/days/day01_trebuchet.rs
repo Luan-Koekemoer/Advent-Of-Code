@@ -1,23 +1,27 @@
+use crate::days::Day;
 use std::collections::HashMap;
 
-pub fn part_one(input: &Vec<String>) -> u32 {
-    return compute_calibration(input, &HashMap::new());
-}
+pub struct Day01;
+impl Day for Day01 {
+    fn part_one(&self, input: &Vec<String>) -> Option<String> {
+        return Some(compute_calibration(input, &HashMap::new()).to_string());
+    }
 
-pub fn part_two(input: &Vec<String>) -> u32 {
-    let special_words_map = HashMap::from([
-        ("one".to_string(), '1'),
-        ("two".to_string(), '2'),
-        ("three".to_string(), '3'),
-        ("four".to_string(), '4'),
-        ("five".to_string(), '5'),
-        ("six".to_string(), '6'),
-        ("seven".to_string(), '7'),
-        ("eight".to_string(), '8'),
-        ("nine".to_string(), '9'),
-    ]);
+    fn part_two(&self, input: &Vec<String>) -> Option<String> {
+        let special_words_map = HashMap::from([
+            ("one".to_string(), '1'),
+            ("two".to_string(), '2'),
+            ("three".to_string(), '3'),
+            ("four".to_string(), '4'),
+            ("five".to_string(), '5'),
+            ("six".to_string(), '6'),
+            ("seven".to_string(), '7'),
+            ("eight".to_string(), '8'),
+            ("nine".to_string(), '9'),
+        ]);
 
-    return compute_calibration(input, &special_words_map);
+        return Some(compute_calibration(input, &special_words_map).to_string());
+    }
 }
 
 fn compute_calibration(input: &Vec<String>, special_words_map: &HashMap<String, char>) -> u32 {
